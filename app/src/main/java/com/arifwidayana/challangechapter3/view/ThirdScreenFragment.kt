@@ -49,7 +49,7 @@ class ThirdScreenFragment : Fragment() {
                 binding.tvEquity.text = "Ekuitas Perusahaan = ${value?.equity}"
                 binding.tvShare.text = "Lembar Saham Beredar = ${value?.share}"
                 binding.tvPriceShare.text = "Harga Lembar Saham = ${value?.priceShare}"
-                binding.tvResultCalculate.text = "Hasil Perhitungan PBV adalah $result`x "
+                binding.tvResultCalculate.text = "Hasil Perhitungan PBV adalah ${result}x "
             }
         }
 

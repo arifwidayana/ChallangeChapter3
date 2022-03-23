@@ -1,6 +1,8 @@
 package com.arifwidayana.challangechapter3.view
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +12,8 @@ import androidx.navigation.fragment.findNavController
 import com.arifwidayana.challangechapter3.R
 import com.arifwidayana.challangechapter3.databinding.FragmentFourthScreenBinding
 import com.arifwidayana.challangechapter3.model.PriceBookValue
+import java.text.NumberFormat
+import java.util.*
 
 class FourthScreenFragment : Fragment() {
     private var bind: FragmentFourthScreenBinding? = null
@@ -30,6 +34,7 @@ class FourthScreenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.btnBackScreen3.setOnClickListener{
             when {
                 binding.etEquityValue.text.isNullOrEmpty() -> Toast.makeText(context, "Please Input Equity!", Toast.LENGTH_SHORT).show()
@@ -47,10 +52,47 @@ class FourthScreenFragment : Fragment() {
                 }
             }
         }
+
+        // with autocomplete point Currency
+        /*binding.etEquityValue.addTextChangedListener(object: TextWatcher {
+            var setEdit = binding.etEquityValue.text.toString().trim()
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                when {
+                    p0.toString() != setEdit -> {
+                        binding.etEquityValue.removeTextChangedListener(this)
+                        val rep = p0.toString().replace("[Rp.]".toRegex(),"")
+                        when {
+                            rep.isNotEmpty() -> setEdit = formatCurrency(rep.toDouble())
+                        }
+                        binding.etEquityValue.setText(setEdit)
+                        binding.etEquityValue.setSelection(setEdit.length)
+                        binding.etEquityValue.addTextChangedListener(this)
+                    }
+                    else -> setEdit = ""
+                }
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+
+            }
+        })*/
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         bind = null
     }
+
+    // with autocomplete point Currency
+    /*private fun formatCurrency(number: Double): String {
+        val formatRupiah = NumberFormat.getCurrencyInstance(Locale("IN", "ID"))
+        val split = formatRupiah.format(number).split(" ".toRegex())
+        val len = split[0].length
+        return "${split[0].substring(0, 2)}.${split[0].substring(2, len)}"
+    }*/
 }
