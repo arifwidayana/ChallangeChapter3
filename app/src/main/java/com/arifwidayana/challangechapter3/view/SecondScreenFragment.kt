@@ -6,23 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import com.arifwidayana.challangechapter3.R
 import com.arifwidayana.challangechapter3.databinding.FragmentSecondScreenBinding
 
 class SecondScreenFragment : Fragment() {
     private var bind: FragmentSecondScreenBinding? = null
     private val binding get() = bind!!
 
-    companion object {
+    /*companion object {
         const val EXTRA_NAME = "NAME"
-    }
+    }*/
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         bind = FragmentSecondScreenBinding.inflate(inflater, container, false)
         return binding.root
@@ -31,6 +29,7 @@ class SecondScreenFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnToScreen3.setOnClickListener{
+            // Pass data with bundle
             /*val bundle = Bundle().apply {
                 putString(EXTRA_NAME, binding.etName.text.toString())
             }
