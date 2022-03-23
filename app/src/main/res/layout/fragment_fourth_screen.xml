@@ -6,16 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".view.FourthScreenFragment">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:text="@string/screen_4"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/et_equity_value"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="8dp"
-        android:hint="Nilai Ekuitas Perusahaan"
+        android:hint="@string/nilai_ekuitas_perusahaan"
+        android:importantForAutofill="no"
+        android:inputType="numberDecimal"
         app:layout_constraintBottom_toTopOf="@+id/et_sheet_per_share"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <EditText
         android:id="@+id/et_sheet_per_share"
@@ -23,7 +36,9 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="8dp"
-        android:hint="Jumlah Saham Beredar Perusahaan"
+        android:hint="@string/jumlah_saham_beredar_perusahaan"
+        android:importantForAutofill="no"
+        android:inputType="numberDecimal"
         app:layout_constraintBottom_toTopOf="@+id/et_price_per_share"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -34,7 +49,9 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="24dp"
-        android:hint="Harga Perlembar Saham"
+        android:hint="@string/harga_perlembar_saham"
+        android:importantForAutofill="no"
+        android:inputType="numberDecimal"
         app:layout_constraintBottom_toTopOf="@+id/btn_back_screen_3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -43,11 +60,11 @@
         android:id="@+id/btn_back_screen_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Back to Screen 3"
+        android:text="@string/back_to_screen_3"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

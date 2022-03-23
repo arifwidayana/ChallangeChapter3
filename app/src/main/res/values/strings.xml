@@ -1,8 +1,22 @@
 <resources>
-    <string name="app_name">Challange Chapter 3</string>
+    <string name="app_name">Challenge Chapter 3</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="go_to_screen_2">Go To Screen 2</string>
     <string name="go_to_screen_3">Go To Screen 3</string>
     <string name="masukkan_nama_anda">Masukkan Nama Anda!</string>
+    <string name="nilai_ekuitas_perusahaan">Nilai Ekuitas Perusahaan</string>
+    <string name="jumlah_saham_beredar_perusahaan">Jumlah Saham Beredar Perusahaan</string>
+    <string name="harga_perlembar_saham">Harga Perlembar Saham</string>
+    <string name="back_to_screen_3">Back to Screen 3</string>
+    <string name="selamat_datang_name">Selamat Datang $name</string>
+    <string name="hasil_perhitungan_pbv_adalah_result">Hasil Perhitungan PBV adalah $result</string>
+    <string name="go_to_screen_4">Go To Screen 4</string>
+    <string name="screen_1">Screen 1</string>
+    <string name="screen_2">Screen 2</string>
+    <string name="screen_3">Screen 3</string>
+    <string name="screen_4">Screen 4</string>
+    <string name="ekuitas_perusahaan_equity">Ekuitas Perusahaan = $equity</string>
+    <string name="lembar_saham_beredar_share">Lembar Saham Beredar = $share</string>
+    <string name="harga_lembar_saham_price">Harga Lembar Saham = $price</string>
 </resources>
