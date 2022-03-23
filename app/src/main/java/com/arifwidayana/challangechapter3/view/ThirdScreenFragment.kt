@@ -25,7 +25,8 @@ class ThirdScreenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val name = arguments?.getString(SecondScreenFragment.EXTRA_NAME)
+        //val name = arguments?.getString(SecondScreenFragment.EXTRA_NAME)
+        val name = ThirdScreenFragmentArgs.fromBundle(arguments as Bundle).name
         val value = arguments?.getParcelable<PriceBookValue>(FourthScreenFragment.VALUE)
         when {
             name != null -> {
