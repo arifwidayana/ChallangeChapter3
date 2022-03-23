@@ -4,4 +4,4 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class PriceBookValue(val equity: Double, val share: Double, val priceShare: Double): Parcelable
+data class PriceBookValue(val equity: Double?, val share: Double?, val priceShare: Double?): Parcelable

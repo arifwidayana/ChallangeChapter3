@@ -1,7 +1,6 @@
 package com.arifwidayana.challangechapter3.view
 
 import android.os.Bundle
-import android.os.Parcelable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -27,15 +26,15 @@ class ThirdScreenFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val name = arguments?.getString(SecondScreenFragment.EXTRA_NAME)
-        val value = arguments?.getBundle(FourthScreenFragment.VALUE) as PriceBookValue
-        val bookValue = value.equity/value.share
-        val result = value.priceShare/bookValue
+        val value = arguments?.getParcelable<PriceBookValue>(FourthScreenFragment.VALUE)
         when {
-            name!!.isNotEmpty() -> {
+            name != null -> {
                 binding.tvResultCalculate.visibility = View.GONE
                 binding.tvName.text = name
             }
             else -> {
+                val bookValue = value?.equity.toString().toDouble() / value?.share.toString().toDouble()
+                val result = value?.priceShare.toString().toDouble() / bookValue
                 binding.tvName.visibility = View.GONE
                 binding.btnToScreen4.visibility = View.GONE
                 binding.tvResultCalculate.text = result.toString()

@@ -1,14 +1,12 @@
 package com.arifwidayana.challangechapter3.view
 
 import android.os.Bundle
-import android.os.Parcelable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.arifwidayana.challangechapter3.R
-import com.arifwidayana.challangechapter3.databinding.FragmentFirstScreenBinding
 import com.arifwidayana.challangechapter3.databinding.FragmentFourthScreenBinding
 import com.arifwidayana.challangechapter3.model.PriceBookValue
 
