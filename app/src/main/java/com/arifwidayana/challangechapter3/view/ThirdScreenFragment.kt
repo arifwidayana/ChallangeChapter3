@@ -45,8 +45,8 @@ class ThirdScreenFragment : Fragment() {
                 else -> {
                     val bookValue = value.equity.toString().toDouble() / value.share.toString().toDouble()
                     val result = value.priceShare.toString().toDouble() / bookValue
-                    tvName.text = value.name.toString()
                     btnToScreen4.visibility = View.GONE
+                    tvName.text = "Hai, ${value.name} inilah Nilai PBV Perusahaan kamu"
                     tvEquity.text = "Ekuitas Perusahaan = ${value.equity}"
                     tvShare.text = "Lembar Saham Beredar = ${value.share}"
                     tvPriceShare.text = "Harga Lembar Saham = ${value.priceShare}"
