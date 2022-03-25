@@ -32,6 +32,21 @@
         tools:ignore="ContentDescription" />
 
     <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:hint="@string/selamat_datang_name"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/iv_pbv"
+        app:layout_constraintBottom_toTopOf="@id/btn_to_screen_4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
         android:id="@+id/tv_equity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,7 +55,7 @@
         android:gravity="center"
         android:textSize="18sp"
         android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/iv_pbv"
+        app:layout_constraintTop_toBottomOf="@id/tv_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -75,22 +90,10 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="24sp"
         android:gravity="center"
+        android:textStyle="bold"
         android:textSize="24sp"
         android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@id/tv_price_share"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:gravity="center"
-        android:hint="@string/selamat_datang_name"
-        android:textSize="24sp"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/btn_to_screen_4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.arifwidayana.challangechapter3.R
 import com.arifwidayana.challangechapter3.databinding.FragmentFourthScreenBinding
 import com.arifwidayana.challangechapter3.model.PriceBookValue
@@ -18,6 +19,7 @@ import java.util.*
 class FourthScreenFragment : Fragment() {
     private var bind: FragmentFourthScreenBinding? = null
     private val binding get() = bind!!
+    private val args by navArgs<FourthScreenFragmentArgs>()
 
     companion object {
         const val VALUE = "VALUE"
@@ -35,20 +37,22 @@ class FourthScreenFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnBackScreen3.setOnClickListener{
-            when {
-                binding.etEquityValue.text.isNullOrEmpty() -> Toast.makeText(context, "Please Input Equity!", Toast.LENGTH_SHORT).show()
-                binding.etSheetPerShare.text.isNullOrEmpty() -> Toast.makeText(context, "Please Input Share!", Toast.LENGTH_SHORT).show()
-                binding.etPricePerShare.text.isNullOrEmpty() -> Toast.makeText(context, "Please Input Price Share!", Toast.LENGTH_SHORT).show()
-                else -> {
-                    val equity = binding.etEquityValue.text.toString().toDouble()
-                    val share = binding.etSheetPerShare.text.toString().toDouble()
-                    val price = binding.etPricePerShare.text.toString().toDouble()
-                    val calculate = PriceBookValue(equity,share,price)
-                    val parcel = Bundle().apply {
-                        putParcelable(VALUE, calculate)
+        with(binding) {
+            btnBackScreen3.setOnClickListener{
+                when {
+                    etEquityValue.text.isNullOrEmpty() -> Toast.makeText(context, "Please Input Equity!", Toast.LENGTH_SHORT).show()
+                    etSheetPerShare.text.isNullOrEmpty() -> Toast.makeText(context, "Please Input Share!", Toast.LENGTH_SHORT).show()
+                    etPricePerShare.text.isNullOrEmpty() -> Toast.makeText(context, "Please Input Price Share!", Toast.LENGTH_SHORT).show()
+                    else -> {
+                        val equity = etEquityValue.text.toString().toDouble()
+                        val share = etSheetPerShare.text.toString().toDouble()
+                        val price = etPricePerShare.text.toString().toDouble()
+                        val calculate = PriceBookValue(args.name, equity, share, price)
+                        val parcel = Bundle().apply {
+                            putParcelable(VALUE, calculate)
+                        }
+                        findNavController().navigate(R.id.action_fourthScreenFragment_to_thirdScreenFragment, parcel)
                     }
-                    findNavController().navigate(R.id.action_fourthScreenFragment_to_thirdScreenFragment, parcel)
                 }
             }
         }

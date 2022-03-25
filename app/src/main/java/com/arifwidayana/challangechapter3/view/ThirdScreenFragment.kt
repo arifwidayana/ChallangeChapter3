@@ -7,13 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.arifwidayana.challangechapter3.R
+import androidx.navigation.fragment.navArgs
 import com.arifwidayana.challangechapter3.databinding.FragmentThirdScreenBinding
 import com.arifwidayana.challangechapter3.model.PriceBookValue
 
 class ThirdScreenFragment : Fragment() {
     private var bind: FragmentThirdScreenBinding? = null
     private val binding get() = bind!!
+
+    private val args by navArgs<ThirdScreenFragmentArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,34 +29,37 @@ class ThirdScreenFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // Pass data with bundle
-        //val name = arguments?.getString(SecondScreenFragment.EXTRA_NAME)
 
-        val name = ThirdScreenFragmentArgs.fromBundle(arguments as Bundle).name
         val value = arguments?.getParcelable<PriceBookValue>(FourthScreenFragment.VALUE)
-        when {
-            name != null -> {
-                binding.ivPbv.visibility = View.GONE
-                binding.tvResultCalculate.visibility = View.GONE
-                binding.tvEquity.visibility = View.GONE
-                binding.tvShare.visibility = View.GONE
-                binding.tvPriceShare.visibility = View.GONE
-                binding.tvName.text = "Selamat datang $name"
-            }
-            else -> {
-                val bookValue = value?.equity.toString().toDouble() / value?.share.toString().toDouble()
-                val result = value?.priceShare.toString().toDouble() / bookValue
-                binding.tvName.visibility = View.GONE
-                binding.btnToScreen4.visibility = View.GONE
-                binding.tvEquity.text = "Ekuitas Perusahaan = ${value?.equity}"
-                binding.tvShare.text = "Lembar Saham Beredar = ${value?.share}"
-                binding.tvPriceShare.text = "Harga Lembar Saham = ${value?.priceShare}"
-                binding.tvResultCalculate.text = "Hasil Perhitungan PBV adalah ${result}x "
+
+        with(binding){
+            when (value) {
+                null -> {
+                    ivPbv.visibility = View.GONE
+                    tvResultCalculate.visibility = View.GONE
+                    tvEquity.visibility = View.GONE
+                    tvShare.visibility = View.GONE
+                    tvPriceShare.visibility = View.GONE
+                    tvName.text = "Selamat datang ${args.name}"
+                }
+                else -> {
+                    val bookValue = value.equity.toString().toDouble() / value.share.toString().toDouble()
+                    val result = value.priceShare.toString().toDouble() / bookValue
+                    tvName.text = value.name.toString()
+                    btnToScreen4.visibility = View.GONE
+                    tvEquity.text = "Ekuitas Perusahaan = ${value.equity}"
+                    tvShare.text = "Lembar Saham Beredar = ${value.share}"
+                    tvPriceShare.text = "Harga Lembar Saham = ${value.priceShare}"
+                    tvResultCalculate.text = "Hasil Perhitungan PBV adalah ${result}x "
+                }
             }
         }
 
         binding.btnToScreen4.setOnClickListener{
-            findNavController().navigate(R.id.action_thirdScreenFragment_to_fourthScreenFragment)
+            //findNavController().navigate(R.id.action_thirdScreenFragment_to_fourthScreenFragment)
+            findNavController().navigate(ThirdScreenFragmentDirections.actionThirdScreenFragmentToFourthScreenFragment(
+                args.name
+            ))
         }
     }
 
