@@ -9,6 +9,10 @@ class FirstScreenFragment : BaseFragment<FragmentFirstScreenBinding>(
     FragmentFirstScreenBinding::inflate
 ) {
     override fun initView() {
+        onClick()
+    }
+
+    private fun onClick() {
         binding.btnToScreen2.setOnClickListener{
             findNavController().navigate(R.id.action_firstScreenFragment_to_secondScreenFragment)
         }
