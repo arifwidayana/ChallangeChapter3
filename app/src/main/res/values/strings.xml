@@ -19,4 +19,8 @@
     <string name="ekuitas_perusahaan_equity">Ekuitas Perusahaan = $equity</string>
     <string name="lembar_saham_beredar_share">Lembar Saham Beredar = $share</string>
     <string name="harga_lembar_saham_price">Harga Lembar Saham = $price</string>
+    <string name="field_input_name">Please input your name!</string>
+    <string name="input_equity">Please Input Equity!</string>
+    <string name="input_share">Please Input Share!</string>
+    <string name="input_price">Please Input Price Share!</string>
 </resources>
