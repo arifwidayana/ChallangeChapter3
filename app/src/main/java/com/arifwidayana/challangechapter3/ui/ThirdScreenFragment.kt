@@ -7,6 +7,8 @@ import androidx.navigation.fragment.navArgs
 import com.arifwidayana.challangechapter3.common.BaseFragment
 import com.arifwidayana.challangechapter3.databinding.FragmentThirdScreenBinding
 import com.arifwidayana.challangechapter3.model.PriceBookValue
+import com.arifwidayana.challangechapter3.utils.Constant
+import com.arifwidayana.challangechapter3.utils.currency
 
 class ThirdScreenFragment : BaseFragment<FragmentThirdScreenBinding>(
     FragmentThirdScreenBinding::inflate
@@ -20,7 +22,7 @@ class ThirdScreenFragment : BaseFragment<FragmentThirdScreenBinding>(
 
     @SuppressLint("SetTextI18n")
     private fun onView() {
-        val value = arguments?.getParcelable<PriceBookValue>(FourthScreenFragment.VALUE)
+        val value = arguments?.getParcelable<PriceBookValue>(Constant.VALUE)
         binding.apply {
             when (value) {
                 null -> {
@@ -31,10 +33,10 @@ class ThirdScreenFragment : BaseFragment<FragmentThirdScreenBinding>(
                     val result = value.priceShare.toString().toDouble() / bookValue
                     btnToScreen4.visibility = View.GONE
                     tvName.text = "Hai, ${value.name} inilah Nilai PBV Perusahaan kamu"
-                    tvEquity.text = "Ekuitas Perusahaan = ${value.equity}"
-                    tvShare.text = "Lembar Saham Beredar = ${value.share}"
-                    tvPriceShare.text = "Harga Lembar Saham = ${value.priceShare}"
-                    tvResultCalculate.text = "Hasil Perhitungan PBV adalah ${result}x "
+                    tvEquity.text = "Ekuitas Perusahaan = ${currency(value.equity.toString())}"
+                    tvShare.text = "Lembar Saham Beredar = ${currency(value.share.toString())}"
+                    tvPriceShare.text = "Harga Lembar Saham = ${currency(value.priceShare.toString())}"
+                    tvResultCalculate.text = "Hasil Perhitungan PBV adalah ${currency(result.toString())}x "
                 }
             }
         }
