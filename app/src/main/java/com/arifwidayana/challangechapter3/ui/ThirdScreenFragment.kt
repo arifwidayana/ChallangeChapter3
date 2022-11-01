@@ -1,4 +1,4 @@
-package com.arifwidayana.challangechapter3.view
+package com.arifwidayana.challangechapter3.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle

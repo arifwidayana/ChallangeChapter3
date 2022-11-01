@@ -1,8 +1,6 @@
-package com.arifwidayana.challangechapter3.view
+package com.arifwidayana.challangechapter3.ui
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,8 +11,6 @@ import androidx.navigation.fragment.navArgs
 import com.arifwidayana.challangechapter3.R
 import com.arifwidayana.challangechapter3.databinding.FragmentFourthScreenBinding
 import com.arifwidayana.challangechapter3.model.PriceBookValue
-import java.text.NumberFormat
-import java.util.*
 
 class FourthScreenFragment : Fragment() {
     private var bind: FragmentFourthScreenBinding? = null
