@@ -1,46 +1,30 @@
 package com.arifwidayana.challangechapter3.ui
 
 import android.annotation.SuppressLint
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.arifwidayana.challangechapter3.common.BaseFragment
 import com.arifwidayana.challangechapter3.databinding.FragmentThirdScreenBinding
 import com.arifwidayana.challangechapter3.model.PriceBookValue
 
-class ThirdScreenFragment : Fragment() {
-    private var bind: FragmentThirdScreenBinding? = null
-    private val binding get() = bind!!
-
+class ThirdScreenFragment : BaseFragment<FragmentThirdScreenBinding>(
+    FragmentThirdScreenBinding::inflate
+) {
     private val args by navArgs<ThirdScreenFragmentArgs>()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View {
-        // Inflate the layout for this fragment
-        bind = FragmentThirdScreenBinding.inflate(inflater, container, false)
-        return binding.root
+    override fun initView() {
+        onView()
+        onClick()
     }
 
     @SuppressLint("SetTextI18n")
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+    private fun onView() {
         val value = arguments?.getParcelable<PriceBookValue>(FourthScreenFragment.VALUE)
-
-        with(binding){
+        binding.apply {
             when (value) {
                 null -> {
-                    ivPbv.visibility = View.GONE
-                    tvResultCalculate.visibility = View.GONE
-                    tvEquity.visibility = View.GONE
-                    tvShare.visibility = View.GONE
-                    tvPriceShare.visibility = View.GONE
-                    tvName.text = "Selamat datang ${args.name}"
+                    visible()
                 }
                 else -> {
                     val bookValue = value.equity.toString().toDouble() / value.share.toString().toDouble()
@@ -54,17 +38,25 @@ class ThirdScreenFragment : Fragment() {
                 }
             }
         }
+    }
 
-        binding.btnToScreen4.setOnClickListener{
-            //findNavController().navigate(R.id.action_thirdScreenFragment_to_fourthScreenFragment)
-            findNavController().navigate(ThirdScreenFragmentDirections.actionThirdScreenFragmentToFourthScreenFragment(
-                args.name
-            ))
+    @SuppressLint("SetTextI18n")
+    private fun visible() {
+        binding.apply {
+            ivPbv.visibility = View.GONE
+            tvResultCalculate.visibility = View.GONE
+            tvEquity.visibility = View.GONE
+            tvShare.visibility = View.GONE
+            tvPriceShare.visibility = View.GONE
+            tvName.text = "Selamat datang ${args.name}"
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        bind = null
+    private fun onClick() {
+        binding.btnToScreen4.setOnClickListener {
+            findNavController().navigate(
+                ThirdScreenFragmentDirections.actionThirdScreenFragmentToFourthScreenFragment(args.name)
+            )
+        }
     }
 }
